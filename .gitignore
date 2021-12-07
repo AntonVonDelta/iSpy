@@ -16,17 +16,19 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
 [Rr]eleases/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 
 # Allow 64 release files
-![Bb]in/x64/Release/
+bin/*
+!bin/x64/
+
+bin/x64/*
+!bin/x64/Release/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
