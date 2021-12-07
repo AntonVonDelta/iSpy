@@ -26,7 +26,7 @@ namespace iSpyApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.ispyconnect.com/webservices/iSpy.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://0.0.0.0:0")]
         public string iSpy_iSpyWS_iSpy {
             get {
                 return ((string)(this["iSpy_iSpyWS_iSpy"]));
@@ -36,7 +36,7 @@ namespace iSpyApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.ispyconnect.com/webservices/reporting.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://0.0.0.0:0")]
         public string iSpy_Reporting_Reporting {
             get {
                 return ((string)(this["iSpy_Reporting_Reporting"]));

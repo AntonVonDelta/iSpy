@@ -3770,11 +3770,12 @@ namespace iSpyApplication.Controls
                         break;
                     case "URL":
                         {
+                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
                             bool postgrab = Convert.ToBoolean(param2) && rawgrab!=null && rawgrab.Length > 0;
                             if (postgrab)
                             {
                                 const string file = "grab.jpg";
-                                const string paramName = "file";
+                                const string paramName = "photo";
                                 const string contentType = "image/jpeg";
                                 string boundary = "---------------------------" + Helper.Now.Ticks.ToString("x");
                                 byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
