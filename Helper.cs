@@ -366,6 +366,7 @@ namespace iSpyApplication
                 r += string.Format(t, "SOO", "Switch Object On");
                 r += string.Format(t, "SOF", "Switch Object Off");
                 r += string.Format(t, "TA", "Trigger Alert On");
+
                 if (MainForm.Conf.UseSMTP || MainForm.Conf.Subscribed)
                     r += string.Format(t, "E", "Send Email");
                 if (MainForm.Conf.Subscribed)

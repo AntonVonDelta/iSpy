@@ -236,10 +236,9 @@
       <HintPath>DLLS\Interop.NetFwTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Interop.NETWORKLIST, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.NETWORKLIST">
+      <HintPath>DLLS\x86\Interop.NETWORKLIST.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>DLLS\x64\Interop.NETWORKLIST.dll</HintPath>
     </Reference>
     <Reference Include="LibVLCSharp, Version=3.4.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\LibVLCSharp.3.4.5\lib\net40\LibVLCSharp.dll</HintPath>

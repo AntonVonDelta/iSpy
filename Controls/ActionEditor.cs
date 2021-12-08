@@ -15,6 +15,8 @@ namespace iSpyApplication.Controls
             {
                 "Exe|ExecuteFile",
                 "URL|CallURL",
+                "TELM|SendTelegramMessage",
+                "TELP|SendTelegramPhoto",
                 "NM|NetworkMessage",
                 "S|PlaySound",
                 "ATC|SoundThroughCamera",
@@ -168,6 +170,12 @@ namespace iSpyApplication.Controls
                     if (param2Val == "")
                         param2Val = "True";
                     config = GetParamConfig(GetName(t), out cancel, "URL", param1Val, LocRm.GetString("UploadImage")+"|Checkbox:True", param2Val);
+                    break;
+                case "TELM":
+                    config = GetParamConfig(GetName(t), out cancel, "Channel Id " + "|DDL:1,2,3");
+                    break;
+                case "TELP":
+                    config = GetParamConfig(GetName(t), out cancel, "Channel Id " + "|DDL:1,2,3");
                     break;
                 case "NM":
                     if (param3Val=="")
