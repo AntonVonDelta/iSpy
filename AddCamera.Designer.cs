@@ -342,6 +342,17 @@ namespace iSpyApplication
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBotToken = new System.Windows.Forms.TextBox();
+            this.chkEnableTelegram = new System.Windows.Forms.CheckBox();
+            this.txtChannel1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtChannel2 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtChannel3 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.tcCamera.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -449,6 +460,7 @@ namespace iSpyApplication
             this.panel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.tabPage11.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSelectSource
@@ -486,6 +498,7 @@ namespace iSpyApplication
             this.tcCamera.Controls.Add(this.tabPage9);
             this.tcCamera.Controls.Add(this.tabPage5);
             this.tcCamera.Controls.Add(this.tabPage6);
+            this.tcCamera.Controls.Add(this.tabPage11);
             this.tcCamera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcCamera.Location = new System.Drawing.Point(10, 10);
             this.tcCamera.Margin = new System.Windows.Forms.Padding(6);
@@ -4334,6 +4347,109 @@ namespace iSpyApplication
             this.linkLabel4.Text = "Copy To...";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.label42);
+            this.tabPage11.Controls.Add(this.txtChannel3);
+            this.tabPage11.Controls.Add(this.label22);
+            this.tabPage11.Controls.Add(this.txtChannel2);
+            this.tabPage11.Controls.Add(this.label18);
+            this.tabPage11.Controls.Add(this.txtChannel1);
+            this.tabPage11.Controls.Add(this.label10);
+            this.tabPage11.Controls.Add(this.chkEnableTelegram);
+            this.tabPage11.Controls.Add(this.txtBotToken);
+            this.tabPage11.Controls.Add(this.label8);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(649, 676);
+            this.tabPage11.TabIndex = 11;
+            this.tabPage11.Text = "Telegram";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(18, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Bot Token";
+            // 
+            // txtBotToken
+            // 
+            this.txtBotToken.Location = new System.Drawing.Point(118, 22);
+            this.txtBotToken.Name = "txtBotToken";
+            this.txtBotToken.Size = new System.Drawing.Size(188, 20);
+            this.txtBotToken.TabIndex = 1;
+            // 
+            // chkEnableTelegram
+            // 
+            this.chkEnableTelegram.AutoSize = true;
+            this.chkEnableTelegram.Location = new System.Drawing.Point(118, 164);
+            this.chkEnableTelegram.Name = "chkEnableTelegram";
+            this.chkEnableTelegram.Size = new System.Drawing.Size(160, 17);
+            this.chkEnableTelegram.TabIndex = 2;
+            this.chkEnableTelegram.Text = "Enable Telegram Messaging";
+            this.chkEnableTelegram.UseVisualStyleBackColor = true;
+            // 
+            // txtChannel1
+            // 
+            this.txtChannel1.Location = new System.Drawing.Point(118, 48);
+            this.txtChannel1.Name = "txtChannel1";
+            this.txtChannel1.Size = new System.Drawing.Size(188, 20);
+            this.txtChannel1.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Channel Id 1";
+            // 
+            // txtChannel2
+            // 
+            this.txtChannel2.Location = new System.Drawing.Point(118, 74);
+            this.txtChannel2.Name = "txtChannel2";
+            this.txtChannel2.Size = new System.Drawing.Size(188, 20);
+            this.txtChannel2.TabIndex = 6;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(18, 77);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(67, 13);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Channel Id 2";
+            // 
+            // txtChannel3
+            // 
+            this.txtChannel3.Location = new System.Drawing.Point(118, 100);
+            this.txtChannel3.Name = "txtChannel3";
+            this.txtChannel3.Size = new System.Drawing.Size(188, 20);
+            this.txtChannel3.TabIndex = 8;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(18, 103);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 13);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "Channel Id 3";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(38, 136);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(268, 13);
+            this.label42.TabIndex = 9;
+            this.label42.Text = "The bot will only listen to commands from these chat ids";
+            // 
             // AddCamera
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -4507,6 +4623,8 @@ namespace iSpyApplication
             this.tableLayoutPanel4.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4824,5 +4942,16 @@ namespace iSpyApplication
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblEncoder;
         private System.Windows.Forms.CheckBox chkResize;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox txtChannel3;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtChannel2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtChannel1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkEnableTelegram;
+        private System.Windows.Forms.TextBox txtBotToken;
+        private System.Windows.Forms.Label label8;
     }
 }

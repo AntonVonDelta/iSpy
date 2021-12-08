@@ -172,7 +172,7 @@ namespace iSpyApplication.Controls
                     config = GetParamConfig(GetName(t), out cancel, "URL", param1Val, LocRm.GetString("UploadImage")+"|Checkbox:True", param2Val);
                     break;
                 case "TELM":
-                    config = GetParamConfig(GetName(t), out cancel, "Channel Id " + "|DDL:1,2,3");
+                    config = GetParamConfig(GetName(t), out cancel, "Channel Id " + "|DDL:1,2,3", param1Val,"Message ",param2Val);
                     break;
                 case "TELP":
                     config = GetParamConfig(GetName(t), out cancel, "Channel Id " + "|DDL:1,2,3");

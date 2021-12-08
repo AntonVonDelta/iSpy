@@ -3844,6 +3844,30 @@ namespace iSpyApplication.Controls
                             }
                         }
                         break;
+                    case "TELM":
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                        var request = (HttpWebRequest)WebRequest.Create(param1);
+                        request.Credentials = CredentialCache.DefaultCredentials;
+                        var response = (HttpWebResponse)request.GetResponse();
+
+                        // Get the stream associated with the response.
+                        Stream receiveStream = response.GetResponseStream();
+
+                        // Pipes the stream to a higher level stream reader with the required encoding format. 
+                        if (receiveStream != null) {
+                            var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                            readStream.ReadToEnd();
+                            response.Close();
+                            readStream.Close();
+                            receiveStream.Close();
+                        }
+                        response.Close();
+                        break;
+                    case "TELP":
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
+                        
+                        break;
                     case "NM": //network message
                         switch (param1)
                         {
