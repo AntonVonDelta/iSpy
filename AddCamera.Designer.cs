@@ -342,17 +342,9 @@ namespace iSpyApplication
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtBotToken = new System.Windows.Forms.TextBox();
-            this.chkEnableTelegram = new System.Windows.Forms.CheckBox();
-            this.txtChannel1 = new System.Windows.Forms.TextBox();
+            this.numMotionTimeout = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtChannel2 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtChannel3 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.tcCamera.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -460,7 +452,7 @@ namespace iSpyApplication
             this.panel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMotionTimeout)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSelectSource
@@ -498,7 +490,6 @@ namespace iSpyApplication
             this.tcCamera.Controls.Add(this.tabPage9);
             this.tcCamera.Controls.Add(this.tabPage5);
             this.tcCamera.Controls.Add(this.tabPage6);
-            this.tcCamera.Controls.Add(this.tabPage11);
             this.tcCamera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcCamera.Location = new System.Drawing.Point(10, 10);
             this.tcCamera.Margin = new System.Windows.Forms.Padding(6);
@@ -2781,18 +2772,20 @@ namespace iSpyApplication
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox10.Location = new System.Drawing.Point(0, 148);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(649, 236);
+            this.groupBox10.Size = new System.Drawing.Size(649, 267);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Save";
             // 
             // tableLayoutPanel24
             // 
+            this.tableLayoutPanel24.AutoSize = true;
             this.tableLayoutPanel24.ColumnCount = 4;
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel24.Controls.Add(this.label10, 0, 4);
             this.tableLayoutPanel24.Controls.Add(this.label95, 0, 1);
             this.tableLayoutPanel24.Controls.Add(this.label96, 0, 0);
             this.tableLayoutPanel24.Controls.Add(this.flowLayoutPanel9, 1, 1);
@@ -2803,15 +2796,18 @@ namespace iSpyApplication
             this.tableLayoutPanel24.Controls.Add(this.tbSaveQuality, 1, 2);
             this.tableLayoutPanel24.Controls.Add(this.label101, 2, 3);
             this.tableLayoutPanel24.Controls.Add(this.numSaveCounter, 3, 3);
+            this.tableLayoutPanel24.Controls.Add(this.numMotionTimeout, 1, 4);
+            this.tableLayoutPanel24.Controls.Add(this.label8, 2, 4);
             this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel24.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel24.Name = "tableLayoutPanel24";
-            this.tableLayoutPanel24.RowCount = 4;
+            this.tableLayoutPanel24.RowCount = 5;
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel24.Size = new System.Drawing.Size(643, 217);
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel24.Size = new System.Drawing.Size(643, 248);
             this.tableLayoutPanel24.TabIndex = 0;
             // 
             // label95
@@ -2840,7 +2836,7 @@ namespace iSpyApplication
             this.flowLayoutPanel9.Controls.Add(this.numSaveDelay);
             this.flowLayoutPanel9.Controls.Add(this.label97);
             this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel9.Location = new System.Drawing.Point(90, 68);
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(92, 68);
             this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             this.flowLayoutPanel9.Size = new System.Drawing.Size(563, 40);
@@ -2849,6 +2845,11 @@ namespace iSpyApplication
             // numSaveDelay
             // 
             this.numSaveDelay.DecimalPlaces = 1;
+            this.numSaveDelay.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numSaveDelay.Location = new System.Drawing.Point(6, 6);
             this.numSaveDelay.Margin = new System.Windows.Forms.Padding(6);
             this.numSaveDelay.Maximum = new decimal(new int[] {
@@ -2892,7 +2893,7 @@ namespace iSpyApplication
             this.tableLayoutPanel25.Controls.Add(this.rdoSaveInterval, 0, 1);
             this.tableLayoutPanel25.Controls.Add(this.flowLayoutPanel25, 1, 1);
             this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel25.Location = new System.Drawing.Point(90, 0);
+            this.tableLayoutPanel25.Location = new System.Drawing.Point(92, 0);
             this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
             this.tableLayoutPanel25.RowCount = 2;
@@ -2983,7 +2984,7 @@ namespace iSpyApplication
             // 
             // txtSaveOverlay
             // 
-            this.txtSaveOverlay.Location = new System.Drawing.Point(96, 171);
+            this.txtSaveOverlay.Location = new System.Drawing.Point(98, 171);
             this.txtSaveOverlay.Margin = new System.Windows.Forms.Padding(6);
             this.txtSaveOverlay.Name = "txtSaveOverlay";
             this.txtSaveOverlay.Size = new System.Drawing.Size(174, 20);
@@ -2993,7 +2994,7 @@ namespace iSpyApplication
             // 
             this.tbSaveQuality.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel24.SetColumnSpan(this.tbSaveQuality, 3);
-            this.tbSaveQuality.Location = new System.Drawing.Point(96, 114);
+            this.tbSaveQuality.Location = new System.Drawing.Point(98, 114);
             this.tbSaveQuality.Margin = new System.Windows.Forms.Padding(6);
             this.tbSaveQuality.Maximum = 100;
             this.tbSaveQuality.Minimum = 20;
@@ -3007,7 +3008,7 @@ namespace iSpyApplication
             // label101
             // 
             this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(282, 173);
+            this.label101.Location = new System.Drawing.Point(284, 173);
             this.label101.Margin = new System.Windows.Forms.Padding(6, 8, 6, 0);
             this.label101.Name = "label101";
             this.label101.Size = new System.Drawing.Size(67, 13);
@@ -3016,7 +3017,7 @@ namespace iSpyApplication
             // 
             // numSaveCounter
             // 
-            this.numSaveCounter.Location = new System.Drawing.Point(361, 171);
+            this.numSaveCounter.Location = new System.Drawing.Point(363, 171);
             this.numSaveCounter.Margin = new System.Windows.Forms.Padding(6);
             this.numSaveCounter.Maximum = new decimal(new int[] {
             999999999,
@@ -4347,108 +4348,44 @@ namespace iSpyApplication
             this.linkLabel4.Text = "Copy To...";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // tabPage11
-            // 
-            this.tabPage11.Controls.Add(this.label42);
-            this.tabPage11.Controls.Add(this.txtChannel3);
-            this.tabPage11.Controls.Add(this.label22);
-            this.tabPage11.Controls.Add(this.txtChannel2);
-            this.tabPage11.Controls.Add(this.label18);
-            this.tabPage11.Controls.Add(this.txtChannel1);
-            this.tabPage11.Controls.Add(this.label10);
-            this.tabPage11.Controls.Add(this.chkEnableTelegram);
-            this.tabPage11.Controls.Add(this.txtBotToken);
-            this.tabPage11.Controls.Add(this.label8);
-            this.tabPage11.Location = new System.Drawing.Point(4, 22);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(649, 676);
-            this.tabPage11.TabIndex = 11;
-            this.tabPage11.Text = "Telegram";
-            this.tabPage11.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 25);
+            this.tableLayoutPanel24.SetColumnSpan(this.label8, 2);
+            this.label8.Location = new System.Drawing.Point(284, 205);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 8, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Bot Token";
+            this.label8.Size = new System.Drawing.Size(249, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Keep saving images after motion detection stops (s)";
             // 
-            // txtBotToken
+            // numMotionTimeout
             // 
-            this.txtBotToken.Location = new System.Drawing.Point(118, 22);
-            this.txtBotToken.Name = "txtBotToken";
-            this.txtBotToken.Size = new System.Drawing.Size(188, 20);
-            this.txtBotToken.TabIndex = 1;
-            // 
-            // chkEnableTelegram
-            // 
-            this.chkEnableTelegram.AutoSize = true;
-            this.chkEnableTelegram.Location = new System.Drawing.Point(118, 164);
-            this.chkEnableTelegram.Name = "chkEnableTelegram";
-            this.chkEnableTelegram.Size = new System.Drawing.Size(160, 17);
-            this.chkEnableTelegram.TabIndex = 2;
-            this.chkEnableTelegram.Text = "Enable Telegram Messaging";
-            this.chkEnableTelegram.UseVisualStyleBackColor = true;
-            // 
-            // txtChannel1
-            // 
-            this.txtChannel1.Location = new System.Drawing.Point(118, 48);
-            this.txtChannel1.Name = "txtChannel1";
-            this.txtChannel1.Size = new System.Drawing.Size(188, 20);
-            this.txtChannel1.TabIndex = 4;
+            this.numMotionTimeout.Location = new System.Drawing.Point(98, 203);
+            this.numMotionTimeout.Margin = new System.Windows.Forms.Padding(6);
+            this.numMotionTimeout.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numMotionTimeout.Name = "numMotionTimeout";
+            this.numMotionTimeout.Size = new System.Drawing.Size(63, 20);
+            this.numMotionTimeout.TabIndex = 41;
+            this.numMotionTimeout.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 51);
+            this.label10.Location = new System.Drawing.Point(6, 205);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 8, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Channel Id 1";
-            // 
-            // txtChannel2
-            // 
-            this.txtChannel2.Location = new System.Drawing.Point(118, 74);
-            this.txtChannel2.Name = "txtChannel2";
-            this.txtChannel2.Size = new System.Drawing.Size(188, 20);
-            this.txtChannel2.TabIndex = 6;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 77);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 13);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Channel Id 2";
-            // 
-            // txtChannel3
-            // 
-            this.txtChannel3.Location = new System.Drawing.Point(118, 100);
-            this.txtChannel3.Name = "txtChannel3";
-            this.txtChannel3.Size = new System.Drawing.Size(188, 20);
-            this.txtChannel3.TabIndex = 8;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(18, 103);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(67, 13);
-            this.label22.TabIndex = 7;
-            this.label22.Text = "Channel Id 3";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(38, 136);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(268, 13);
-            this.label42.TabIndex = 9;
-            this.label42.Text = "The bot will only listen to commands from these chat ids";
+            this.label10.Size = new System.Drawing.Size(80, 13);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Motion Timeout";
             // 
             // AddCamera
             // 
@@ -4556,6 +4493,7 @@ namespace iSpyApplication
             this.flowLayoutPanel23.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.tableLayoutPanel24.ResumeLayout(false);
             this.tableLayoutPanel24.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
@@ -4623,8 +4561,7 @@ namespace iSpyApplication
             this.tableLayoutPanel4.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.tabPage11.ResumeLayout(false);
-            this.tabPage11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMotionTimeout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4942,16 +4879,8 @@ namespace iSpyApplication
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblEncoder;
         private System.Windows.Forms.CheckBox chkResize;
-        private System.Windows.Forms.TabPage tabPage11;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox txtChannel3;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtChannel2;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtChannel1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox chkEnableTelegram;
-        private System.Windows.Forms.TextBox txtBotToken;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown numMotionTimeout;
+        private System.Windows.Forms.Label label10;
     }
 }

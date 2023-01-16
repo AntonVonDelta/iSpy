@@ -2341,12 +2341,15 @@ public partial class objectsCameraSavelocal {
     
     private int qualityField;
     
+    private int motiontimeoutField;
+    
     public objectsCameraSavelocal() {
         this.filenameField = "{0:yyyy-MM-dd_HH-mm-ss_fff}.jpg";
         this.intervalnewField = -1D;
         this.minimumdelayField = 0D;
         this.modeField = 2;
         this.textField = "www.ispyconnect.com";
+        this.motiontimeoutField = 0;
     }
     
     /// <remarks/>
@@ -2436,6 +2439,16 @@ public partial class objectsCameraSavelocal {
         }
         set {
             this.qualityField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public int motiontimeout {
+        get {
+            return this.motiontimeoutField;
+        }
+        set {
+            this.motiontimeoutField = value;
         }
     }
 }
@@ -3808,7 +3821,13 @@ public partial class objectsCameraPtzscheduleEntry {
     
     private string commandField;
     
+    private string tokenField;
+    
     private System.DateTime timeField;
+    
+    public objectsCameraPtzscheduleEntry() {
+        this.tokenField = "";
+    }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -3818,6 +3837,18 @@ public partial class objectsCameraPtzscheduleEntry {
         }
         set {
             this.commandField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    [System.ComponentModel.DefaultValueAttribute("")]
+    public string token {
+        get {
+            return this.tokenField;
+        }
+        set {
+            this.tokenField = value;
         }
     }
     

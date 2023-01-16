@@ -145,9 +145,19 @@ namespace iSpyApplication.Server
 
         public string StartServer()
         {
-            bool ssl = MainForm.Conf.SSLEnabled;
-            if (ssl && !string.IsNullOrEmpty(MainForm.Conf.SSLCertificate))
+            bool ssl = false;
+            if (!string.IsNullOrEmpty(MainForm.Conf.SSLCertificate))
                 X509.LoadCertificate(MainForm.Conf.SSLCertificate);
+            else
+            {
+                if (ssl)
+                {
+                    bool b;
+                    var ip = WsWrapper.ExternalIPv4(true, out b);
+                    if (b)
+                        X509.CreateCertificate(ip);
+                }
+            }
 
             string message = "";
             try
@@ -574,14 +584,15 @@ namespace iSpyApplication.Server
                     mySocket.ReceiveTimeout = mySocket.SendTimeout = 4000;
                     try
                     {
-                        if (MainForm.Conf.SSLEnabled && X509.SslCertificate != null)
+                        if (X509.SslCertificate != null)
                         {
                             req.RestartableStream = new RestartableReadStream(req.TcpClient.GetStream());
                             req.Stream = new SslStream(req.RestartableStream, true, ClientValidationCallback);
                             try
                             {
                                 ((SslStream) req.Stream).BeginAuthenticateAsServer(X509.SslCertificate,
-                                    MainForm.Conf.SSLClientRequired, SslProtocols.Default,
+                                    true, SslProtocols.Tls12,
+                                    //MainForm.Conf.SSLClientRequired, SslProtocols.Default,
                                     MainForm.Conf.SSLCheckRevocation, OnAuthenticateAsServer, req);
                             }
                             catch
@@ -1218,8 +1229,8 @@ namespace iSpyApplication.Server
             ParseMimeType(sRequestedFile, out sFileName, out sMimeType);
 
             sPhysicalFilePath = (sLocalDir + sRequestedFile).Replace("%20", " ").ToLower();
-
-            var bHasAuth = sPhysicalFilePath.EndsWith("crossdomain.xml") || CheckAuth(sPhysicalFilePath);
+            
+            bool bHasAuth = sRequestedFile.ToLower() == "crossdomain.xml" || CheckAuth(sPhysicalFilePath);
 
 
             bServe = (sMimeType != "") && (bServe || (bHasAuth && bHasReferer));
@@ -1798,34 +1809,46 @@ namespace iSpyApplication.Server
                     {
                         try
                         {
+                            if (fn.Contains("../") || fn.Contains(@"..\"))
+                            {
+                                throw new Exception("Request blocked (directory traversal)");
+                            }
+                            string d = Helper.GetMediaDirectory(otid, oid);
                             string subdir = Helper.GetDirectory(otid, oid);
-                            string filename = Helper.GetMediaDirectory(otid, oid);
+                            if (!File.Exists(fn))
+                                throw new Exception("File does not exist");
+
+                            var file = new FileInfo(fn);
+                            if (!file.DirectoryName.ToLower().StartsWith(d.ToLower()))
+                                throw new Exception("Request blocked (outside media directory)");
+
+                            
                             switch (otid)
                             {
                                 case 1:
-                                    filename = filename + "audio\\";
+                                    d = d + "audio\\";
                                     break;
                                 case 2:
-                                    filename = filename + "video\\";
+                                    d = d + "video\\";
                                     break;
                             }
-                            filename += subdir + @"\" + fn;
+                            d += subdir;
 
                             try
                             {
-                                Process.Start(filename);
+                                Process.Start(d + @"\" + fn);
                             }
                             catch (Exception ex)
                             {
                                 Logger.LogException(ex, "Playback");
-                                MessageBox.Show(ex.Message);
+                                resp = ex.Message;
                             }
                             resp = "OK";
                         }
                         catch (Exception ex)
                         {
                             Logger.LogException(ex, "Server");
-                            return ex.Message;
+                            resp = ex.Message;
                         }
                     }
                     break;
@@ -1872,12 +1895,12 @@ namespace iSpyApplication.Server
                     }
                     resp = "OK";
                     break;
-                case "uploadyoutube":
-                {
-                    bool b;
-                    resp = YouTubeUploader.Upload(oid, Helper.GetFullPath(otid, oid) + fn, out b) + ",OK";
-                }
-                    break;
+                //case "uploadyoutube":
+                //{
+                //    bool b;
+                //    resp = YouTubeUploader.Upload(oid, Helper.GetFullPath(otid, oid) + fn, out b) + ",OK";
+                //}
+                //    break;
                 case "uploadcloud":
                 {
                     bool b;
@@ -2431,6 +2454,101 @@ namespace iSpyApplication.Server
                         func = func.Replace("data", temp);
                     }
                     resp = "OK";
+                    break;
+                case "editgridview":
+                    {
+                        string index = GetVar(sRequest, "index");
+                        var cids = GetVar(sRequest, "ids").Split(',').Where(x => int.TryParse(x, out _)).Select(int.Parse).ToList();
+                        int ind = Convert.ToInt32(index);
+                        var cg = MainForm.Conf.GridViews.ToList()[ind];
+
+                        int cols = Convert.ToInt32(Math.Ceiling(Math.Sqrt(cids.Count())));
+                        int rows = Convert.ToInt32(Math.Ceiling(cids.Count() / Convert.ToDouble(cols)));
+
+                        if (cg != null)
+                        {
+                            cg.Columns = cols;
+                            cg.Rows = rows;
+                            var gi = new List<configurationGridGridItem>();
+                            int j = 0;
+                            foreach(var id in cids)
+                            {
+                                if (id > 0)
+                                {
+                                    gi.Add(new configurationGridGridItem() { GridIndex = j, CycleDelay = 4, Item = new configurationGridGridItemItem[] { new configurationGridGridItemItem() { ObjectID = id, TypeID = 2 } } });
+                                }
+                                j++;
+                            }
+                            cg.GridItem = gi.ToArray();
+                            MainForm.Conf.GridViews[ind] = cg;
+                        }
+
+                        MainForm.InstanceReference.ShowGridViewRemote(index);
+                        resp = "OK";
+                    }
+                    break;
+                case "showgridview":
+                    {
+                        string index = GetVar(sRequest, "index");
+                        MainForm.InstanceReference.ShowGridViewRemote(index);
+                        resp = "OK";
+                    }
+                    break;
+                case "closegridview":
+                    {
+                        string index = GetVar(sRequest, "index");
+                        MainForm.InstanceReference.CloseGridViewRemote(index);
+                        resp = "OK";
+                    }
+                    break;
+                case "setresize":
+                    {
+                        var cw = MainForm.InstanceReference.GetCameraWindow(oid);
+                        bool resize = GetVar(sRequest, "resize") != "false";
+                        if (cw != null)
+                        {
+                            if (cw.Camobject.settings.resize != resize)
+                            {
+                                cw.Camobject.settings.resize = resize;
+                                cw.Restart();
+                            }
+                        }
+                        resp = "OK";
+                    }
+                    break;
+                case "enablegridcameras":
+                    {
+                        string index = GetVar(sRequest, "index");
+                        var cids = GetVar(sRequest, "ids").Split(',').Where(x => int.TryParse(x, out _)).Select(int.Parse).ToList();
+                        int ind = Convert.ToInt32(index);
+                        var cg = MainForm.Conf.GridViews.ToList()[ind];
+                        int cols = cg.Columns;
+                        int rows = cg.Rows;
+
+                        if (cg != null)
+                        {
+                            foreach(var gi in cg.GridItem)
+                            {
+                                if (gi.Item != null && gi.Item.Length > 0)
+                                {
+                                    foreach (var i in gi.Item)
+                                    {
+                                        CameraWindow cw = MainForm.InstanceReference.GetCameraWindow(i.ObjectID);
+                                        if (cw != null)
+                                        {
+                                            if (cids.Contains(i.ObjectID))
+                                            {
+                                                cw.Enable();
+                                            }
+                                            else
+                                                cw.Disable();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        resp = "OK";
+                    }
                     break;
                 case "getgrabs":
                     sd = GetVar(sRequest, "startdate");

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSpy", "iSpy.csproj", "{F4799C73-DEE9-48F2-B626-32149CC30976}"
 EndProject
@@ -66,18 +66,6 @@ Global
 		{949FACB4-C156-4EFE-93B4-654CA8794DE5}.Release|x64.ActiveCfg = Release|x86
 		{949FACB4-C156-4EFE-93B4-654CA8794DE5}.Release|x86.ActiveCfg = Release|x86
 		{949FACB4-C156-4EFE-93B4-654CA8794DE5}.Release|x86.Build.0 = Release|x86
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|x64.Build.0 = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Debug|x86.Build.0 = Debug|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|x64.ActiveCfg = Release|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|x64.Build.0 = Release|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|x86.ActiveCfg = Release|Any CPU
-		{99F347CC-8526-4CC0-9E64-F2AAF2066782}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

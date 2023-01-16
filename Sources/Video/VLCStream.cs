@@ -201,7 +201,7 @@ namespace iSpyApplication.Sources.Video
 
             if (IsRunning) return;
             IsRunning = true;
-            Task.Run(DoStart);
+            Task.Run(new Action(DoStart));
         }
 
         private void DoStart() {
@@ -231,24 +231,20 @@ namespace iSpyApplication.Sources.Video
             if (_stopping)
                 return;
 
-            lock (this)
+           
+            _stopping = true;
+            _res = res;
+
+            var mp = _mediaPlayer;
+            if (mp != null && mp?.NativeReference != IntPtr.Zero && mp?.IsPlaying == true)
             {
-                if (_stopping)
-                    return;
-
-                _stopping = true;
-                _res = res;
-                
-                var mp = _mediaPlayer;
-                if (mp!=null && mp?.NativeReference != IntPtr.Zero && mp?.IsPlaying == true)
-                {
-                    Debug.WriteLine("stop (" + DateTime.Now.Millisecond + ")");
-                    mp?.Pause();
-                    mp?.Stop();
-                    _stopped.WaitOne(2000);
-                }
-
+                mp?.Pause();
+                Task.Run(() => mp?.Stop()).ConfigureAwait(false); //deadlock if in lock
             }
+
+
+            _stopped.WaitOne(5000); 
+            _stopping = false;
         }
         
 
